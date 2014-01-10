@@ -427,7 +427,8 @@ function createTMPL(seajsRoot,modulePath,packConfig){
 							.slice(index,exec.index)
 								.replace(/\\/gmi,"\\\\")
 								.replace(/'/gmi,"\\'")
-								.replace(/\r\n|\r|\n/g,"\\r\\n\\\r\n")
+								.replace(/[\s\t\n\r]+\/\/(?:[^\n\r]*)/gmi,"")
+								.replace(/\r\n|\r|\n|\t/gmi,"")
 					);
 					res.push("');\r\n");
 				}
@@ -454,7 +455,8 @@ function createTMPL(seajsRoot,modulePath,packConfig){
 					.slice(index)
 						.replace(/\\/gmi,"\\\\")
 						.replace(/'/gmi,"\\'")
-						.replace(/\r\n|\r|\n/g,"\\r\\n\\\r\n")
+						.replace(/[\s\t\n\r]+\/\/(?:[^\n\r]*)/gmi,"")
+						.replace(/\r\n|\r|\n|\t/g,"")
 			);
 			res.push("');\r\n");
 
